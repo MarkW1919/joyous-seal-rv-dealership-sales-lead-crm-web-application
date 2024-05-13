@@ -1,0 +1,17 @@
+[
+  {
+    "name": "App",
+    "path": "/",
+    "components": ["Header", "Placeholder"]
+  },
+  {
+    "name": "Login",
+    "path": "/login",
+    "components": ["LoginComponent"]
+  },
+  {
+    "name": "SignUp",
+    "path": "/signup",
+    "components": ["SignUpComponent"]
+  }
+]

@@ -1,0 +1,17 @@
+{
+  "page": "SignUp",
+  "columns": 12,
+  "rows": 12,
+  "gap": "10px",
+  "components": [
+    {
+      "name": "SignUpComponent",
+      "position": {
+        "columnStart": 4,
+        "columnEnd": 10,
+        "rowStart": 4,
+        "rowEnd": 8
+      }
+    }
+  ]
+}

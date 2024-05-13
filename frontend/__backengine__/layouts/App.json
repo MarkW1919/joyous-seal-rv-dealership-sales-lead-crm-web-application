@@ -1,0 +1,26 @@
+{
+  "page": "App",
+  "columns": 12,
+  "rows": 12,
+  "gap": "10px",
+  "components": [
+    {
+      "name": "Header",
+      "position": {
+        "columnStart": 1,
+        "columnEnd": 13,
+        "rowStart": 1,
+        "rowEnd": 2
+      }
+    },
+    {
+      "name": "Placeholder",
+      "position": {
+        "columnStart": 1,
+        "columnEnd": 13,
+        "rowStart": 2,
+        "rowEnd": 13
+      }
+    }
+  ]
+}

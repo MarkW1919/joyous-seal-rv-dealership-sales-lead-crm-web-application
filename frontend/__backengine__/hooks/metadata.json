@@ -1,0 +1,50 @@
+[
+  {
+    "hookName": "useLoginMutation",
+    "definition": "const { login } = useLoginMutation();",
+    "definitionReturnValues": {
+      "login": "`login({ email, password });` - async function to login a user, no return value",
+      "isError": "boolean - to check if an error occurred",
+      "isLoading": "boolean - to check if the request is in progress"
+    },
+    "import": "import useLoginMutation from \"@/backengine/hooks/useLoginMutation\";",
+    "request": {
+      "schema": {
+        "type": "object",
+        "properties": {
+          "email": { "type": "string" },
+          "password": { "type": "string" }
+        },
+        "required": ["email", "password"]
+      }
+    }
+  },
+  {
+    "hookName": "useSignUpMutation",
+    "definition": "const { signUp } = useSignUpMutation();",
+    "definitionReturnValues": {
+      "signUp": "`signUp({ email, password });` - async function to create a user, no return value",
+      "isError": "boolean - to check if an error occurred",
+      "isLoading": "boolean - to check if the request is in progress"
+    },
+    "import": "import useSignUpMutation from \"@/backengine/hooks/useSignUpMutation\";",
+    "request": {
+      "schema": {
+        "type": "object",
+        "properties": {
+          "email": { "type": "string" },
+          "password": { "type": "string" }
+        },
+        "required": ["email", "password"]
+      }
+    }
+  },
+  {
+    "hookName": "useSignOutMutation",
+    "definition": "const { signUp } = useSignOutMutation();",
+    "definitionReturnValues": {
+      "signOut": "`signOut();` - function to sign out a user, no return value"
+    },
+    "import": "import useSignOutMutation from \"@/backengine/hooks/useSignOutMutation\";"
+  }
+]
