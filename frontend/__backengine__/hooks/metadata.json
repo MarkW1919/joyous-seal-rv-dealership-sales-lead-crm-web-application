@@ -46,5 +46,176 @@
       "signOut": "`signOut();` - function to sign out a user, no return value"
     },
     "import": "import useSignOutMutation from \"@/backengine/hooks/useSignOutMutation\";"
+  },
+  {
+    "hookName": "useHealthcheckQuery",
+    "definition": "const { data, isError, isLoading } = useHealthcheckQuery();",
+    "definitionReturnValues": {
+      "data": "data - contains the response data, possible undefined if loading or error occurred",
+      "isError": "boolean - to check if an error occurred",
+      "isLoading": "boolean - to check if the request is in progress"
+    },
+    "import": "import useHealthcheckQuery from \"@/backengine/hooks/useHealthcheckQuery\";"
+  },
+  {
+    "hookName": "useApiKeyQuery",
+    "definition": "const { data, isError, isLoading } = useApiKeyQuery();",
+    "definitionReturnValues": {
+      "data": "data - contains the response data, possible undefined if loading or error occurred",
+      "isError": "boolean - to check if an error occurred",
+      "isLoading": "boolean - to check if the request is in progress"
+    },
+    "import": "import useApiKeyQuery from \"@/backengine/hooks/useApiKeyQuery\";",
+    "response": {
+      "schema": {
+        "type": "object",
+        "properties": { "apiKey": { "type": "string" } },
+        "required": ["apiKey"]
+      }
+    }
+  },
+  {
+    "hookName": "useLeadsIdQuery",
+    "definition": "const { data, isError, isLoading } = useLeadsIdQuery(\"id\");",
+    "definitionReturnValues": {
+      "data": "data - contains the response data, possible undefined if loading or error occurred",
+      "isError": "boolean - to check if an error occurred",
+      "isLoading": "boolean - to check if the request is in progress"
+    },
+    "import": "import useLeadsIdQuery from \"@/backengine/hooks/useLeadsIdQuery\";",
+    "parameters": [
+      {
+        "schema": { "type": "number" },
+        "in": "path",
+        "name": "id",
+        "required": true
+      }
+    ],
+    "response": {
+      "schema": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "number" },
+          "ContactName": { "type": "string" },
+          "Email": { "type": "string" },
+          "PhoneNumber": { "type": "string" },
+          "InventoryID": { "type": "string" },
+          "LeadSource": { "type": "string" },
+          "InterestLevel": { "type": "integer" },
+          "PreviousVisits": { "type": "boolean" }
+        }
+      }
+    }
+  },
+  {
+    "hookName": "useLeadsPostMutation",
+    "definition": "const { execute, isError, isLoading } = useLeadsPostMutation();",
+    "definitionReturnValues": {
+      "execute": "execute - async function to execute the POST request",
+      "isError": "boolean - to check if an error occurred",
+      "isLoading": "boolean - to check if the request is in progress"
+    },
+    "import": "import useLeadsPostMutation from \"@/backengine/hooks/useLeadsPostMutation\";",
+    "response": {
+      "schema": {
+        "type": "object",
+        "properties": { "id": { "type": "number" } }
+      }
+    },
+    "request": {
+      "schema": {
+        "type": "object",
+        "properties": {
+          "ContactName": { "type": "string" },
+          "Email": { "type": "string" },
+          "PhoneNumber": { "type": "string" },
+          "InventoryID": { "type": "string" },
+          "LeadSource": { "type": "string" },
+          "InterestLevel": { "type": "integer" },
+          "PreviousVisits": { "type": "boolean", "default": false }
+        },
+        "required": [
+          "ContactName",
+          "Email",
+          "PhoneNumber",
+          "InventoryID",
+          "LeadSource",
+          "InterestLevel"
+        ]
+      }
+    }
+  },
+  {
+    "hookName": "useLeadsIdDeleteMutation",
+    "definition": "const { execute, isError, isLoading } = useLeadsIdDeleteMutation(\"id\");",
+    "definitionReturnValues": {
+      "execute": "execute - async function to execute the DELETE request",
+      "isError": "boolean - to check if an error occurred",
+      "isLoading": "boolean - to check if the request is in progress"
+    },
+    "import": "import useLeadsIdDeleteMutation from \"@/backengine/hooks/useLeadsIdDeleteMutation\";",
+    "parameters": [
+      {
+        "schema": { "type": "number" },
+        "in": "path",
+        "name": "id",
+        "required": true
+      }
+    ]
+  },
+  {
+    "hookName": "useLeadsIdPutMutation",
+    "definition": "const { execute, isError, isLoading } = useLeadsIdPutMutation(\"id\");",
+    "definitionReturnValues": {
+      "execute": "execute - async function to execute the PUT request",
+      "isError": "boolean - to check if an error occurred",
+      "isLoading": "boolean - to check if the request is in progress"
+    },
+    "import": "import useLeadsIdPutMutation from \"@/backengine/hooks/useLeadsIdPutMutation\";",
+    "parameters": [
+      {
+        "schema": { "type": "number" },
+        "in": "path",
+        "name": "id",
+        "required": true
+      }
+    ],
+    "response": {
+      "schema": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "number" },
+          "ContactName": { "type": "string" },
+          "Email": { "type": "string" },
+          "PhoneNumber": { "type": "string" },
+          "InventoryID": { "type": "string" },
+          "LeadSource": { "type": "string" },
+          "InterestLevel": { "type": "integer" },
+          "PreviousVisits": { "type": "boolean" }
+        }
+      }
+    },
+    "request": {
+      "schema": {
+        "type": "object",
+        "properties": {
+          "ContactName": { "type": "string" },
+          "Email": { "type": "string" },
+          "PhoneNumber": { "type": "string" },
+          "InventoryID": { "type": "string" },
+          "LeadSource": { "type": "string" },
+          "InterestLevel": { "type": "integer" },
+          "PreviousVisits": { "type": "boolean" }
+        },
+        "required": [
+          "ContactName",
+          "Email",
+          "PhoneNumber",
+          "InventoryID",
+          "LeadSource",
+          "InterestLevel"
+        ]
+      }
+    }
   }
 ]
