@@ -1,0 +1,4 @@
+CREATE TABLE new_leads (id INTEGER PRIMARY KEY AUTOINCREMENT, ContactName TEXT NOT NULL, Email TEXT NOT NULL, PhoneNumber TEXT NOT NULL, InventoryID TEXT NOT NULL, LeadSource TEXT NOT NULL, InterestLevel INTEGER NOT NULL, PreviousVisits BOOLEAN NOT NULL, FOREIGN KEY(InventoryID) REFERENCES inventory(id));
+INSERT INTO new_leads (id, ContactName, Email, PhoneNumber, InventoryID, LeadSource, InterestLevel, PreviousVisits) SELECT id, ContactName, Email, PhoneNumber, CAST(InventoryID AS TEXT), LeadSource, InterestLevel, PreviousVisits FROM leads;
+DROP TABLE leads;
+ALTER TABLE new_leads RENAME TO leads;

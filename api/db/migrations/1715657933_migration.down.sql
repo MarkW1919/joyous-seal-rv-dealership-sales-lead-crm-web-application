@@ -1,0 +1,4 @@
+CREATE TABLE old_leads (id INTEGER PRIMARY KEY AUTOINCREMENT, ContactName TEXT NOT NULL, Email TEXT NOT NULL, PhoneNumber TEXT NOT NULL, InventoryID INTEGER NOT NULL, LeadSource TEXT NOT NULL, InterestLevel INTEGER NOT NULL, PreviousVisits BOOLEAN NOT NULL, FOREIGN KEY(InventoryID) REFERENCES inventory(id));
+INSERT INTO old_leads SELECT * FROM leads;
+DROP TABLE leads;
+ALTER TABLE old_leads RENAME TO leads;
