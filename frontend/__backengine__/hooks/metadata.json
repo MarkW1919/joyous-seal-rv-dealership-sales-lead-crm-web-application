@@ -82,26 +82,6 @@
     ]
   },
   {
-    "hookName": "useHealthcheckQuery",
-    "definition": "const { data, isError, isLoading } = useHealthcheckQuery();",
-    "definitionReturnValues": {
-      "data": "data - contains the response data, possible undefined if loading or error occurred",
-      "isError": "boolean - to check if an error occurred",
-      "isLoading": "boolean - to check if the request is in progress"
-    },
-    "import": "import useHealthcheckQuery from \"@/backengine/hooks/useHealthcheckQuery\";"
-  },
-  {
-    "hookName": "useApiResetPasswordPostMutation",
-    "definition": "const { execute, isError, isLoading } = useApiResetPasswordPostMutation();",
-    "definitionReturnValues": {
-      "execute": "execute - async function to execute the POST request",
-      "isError": "boolean - to check if an error occurred",
-      "isLoading": "boolean - to check if the request is in progress"
-    },
-    "import": "import useApiResetPasswordPostMutation from \"@/backengine/hooks/useApiResetPasswordPostMutation\";"
-  },
-  {
     "hookName": "useReportsExportPdfQuery",
     "definition": "const { data, isError, isLoading } = useReportsExportPdfQuery(\"startDate\", \"endDate\");",
     "definitionReturnValues": {
@@ -124,6 +104,26 @@
         "required": true
       }
     ]
+  },
+  {
+    "hookName": "useHealthcheckQuery",
+    "definition": "const { data, isError, isLoading } = useHealthcheckQuery();",
+    "definitionReturnValues": {
+      "data": "data - contains the response data, possible undefined if loading or error occurred",
+      "isError": "boolean - to check if an error occurred",
+      "isLoading": "boolean - to check if the request is in progress"
+    },
+    "import": "import useHealthcheckQuery from \"@/backengine/hooks/useHealthcheckQuery\";"
+  },
+  {
+    "hookName": "useApiResetPasswordPostMutation",
+    "definition": "const { execute, isError, isLoading } = useApiResetPasswordPostMutation();",
+    "definitionReturnValues": {
+      "execute": "execute - async function to execute the POST request",
+      "isError": "boolean - to check if an error occurred",
+      "isLoading": "boolean - to check if the request is in progress"
+    },
+    "import": "import useApiResetPasswordPostMutation from \"@/backengine/hooks/useApiResetPasswordPostMutation\";"
   },
   {
     "hookName": "useApiKeyQuery",
