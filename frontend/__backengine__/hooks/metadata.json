@@ -58,30 +58,6 @@
     "import": "import useDashboardDataQuery from \"@/backengine/hooks/useDashboardDataQuery\";"
   },
   {
-    "hookName": "useReportsExportPdfQuery",
-    "definition": "const { data, isError, isLoading } = useReportsExportPdfQuery(\"startDate\", \"endDate\");",
-    "definitionReturnValues": {
-      "data": "data - contains the response data, possible undefined if loading or error occurred",
-      "isError": "boolean - to check if an error occurred",
-      "isLoading": "boolean - to check if the request is in progress"
-    },
-    "import": "import useReportsExportPdfQuery from \"@/backengine/hooks/useReportsExportPdfQuery\";",
-    "parameters": [
-      {
-        "schema": { "type": "string", "format": "date" },
-        "in": "query",
-        "name": "startDate",
-        "required": true
-      },
-      {
-        "schema": { "type": "string", "format": "date" },
-        "in": "query",
-        "name": "endDate",
-        "required": true
-      }
-    ]
-  },
-  {
     "hookName": "useReportsExportCsvQuery",
     "definition": "const { data, isError, isLoading } = useReportsExportCsvQuery(\"startDate\", \"endDate\");",
     "definitionReturnValues": {
@@ -116,6 +92,40 @@
     "import": "import useHealthcheckQuery from \"@/backengine/hooks/useHealthcheckQuery\";"
   },
   {
+    "hookName": "useApiResetPasswordPostMutation",
+    "definition": "const { execute, isError, isLoading } = useApiResetPasswordPostMutation();",
+    "definitionReturnValues": {
+      "execute": "execute - async function to execute the POST request",
+      "isError": "boolean - to check if an error occurred",
+      "isLoading": "boolean - to check if the request is in progress"
+    },
+    "import": "import useApiResetPasswordPostMutation from \"@/backengine/hooks/useApiResetPasswordPostMutation\";"
+  },
+  {
+    "hookName": "useReportsExportPdfQuery",
+    "definition": "const { data, isError, isLoading } = useReportsExportPdfQuery(\"startDate\", \"endDate\");",
+    "definitionReturnValues": {
+      "data": "data - contains the response data, possible undefined if loading or error occurred",
+      "isError": "boolean - to check if an error occurred",
+      "isLoading": "boolean - to check if the request is in progress"
+    },
+    "import": "import useReportsExportPdfQuery from \"@/backengine/hooks/useReportsExportPdfQuery\";",
+    "parameters": [
+      {
+        "schema": { "type": "string", "format": "date" },
+        "in": "query",
+        "name": "startDate",
+        "required": true
+      },
+      {
+        "schema": { "type": "string", "format": "date" },
+        "in": "query",
+        "name": "endDate",
+        "required": true
+      }
+    ]
+  },
+  {
     "hookName": "useApiKeyQuery",
     "definition": "const { data, isError, isLoading } = useApiKeyQuery();",
     "definitionReturnValues": {
@@ -129,6 +139,39 @@
         "type": "object",
         "properties": { "apiKey": { "type": "string" } },
         "required": ["apiKey"]
+      }
+    }
+  },
+  {
+    "hookName": "useLeadsIdQuery",
+    "definition": "const { data, isError, isLoading } = useLeadsIdQuery(\"id\");",
+    "definitionReturnValues": {
+      "data": "data - contains the response data, possible undefined if loading or error occurred",
+      "isError": "boolean - to check if an error occurred",
+      "isLoading": "boolean - to check if the request is in progress"
+    },
+    "import": "import useLeadsIdQuery from \"@/backengine/hooks/useLeadsIdQuery\";",
+    "parameters": [
+      {
+        "schema": { "type": "number" },
+        "in": "path",
+        "name": "id",
+        "required": true
+      }
+    ],
+    "response": {
+      "schema": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "number" },
+          "ContactName": { "type": "string" },
+          "Email": { "type": "string" },
+          "PhoneNumber": { "type": "string" },
+          "InventoryID": { "type": "string" },
+          "LeadSource": { "type": "string" },
+          "InterestLevel": { "type": "integer" },
+          "PreviousVisits": { "type": "boolean" }
+        }
       }
     }
   },
@@ -167,39 +210,6 @@
           "LeadSource",
           "InterestLevel"
         ]
-      }
-    }
-  },
-  {
-    "hookName": "useLeadsIdQuery",
-    "definition": "const { data, isError, isLoading } = useLeadsIdQuery(\"id\");",
-    "definitionReturnValues": {
-      "data": "data - contains the response data, possible undefined if loading or error occurred",
-      "isError": "boolean - to check if an error occurred",
-      "isLoading": "boolean - to check if the request is in progress"
-    },
-    "import": "import useLeadsIdQuery from \"@/backengine/hooks/useLeadsIdQuery\";",
-    "parameters": [
-      {
-        "schema": { "type": "number" },
-        "in": "path",
-        "name": "id",
-        "required": true
-      }
-    ],
-    "response": {
-      "schema": {
-        "type": "object",
-        "properties": {
-          "id": { "type": "number" },
-          "ContactName": { "type": "string" },
-          "Email": { "type": "string" },
-          "PhoneNumber": { "type": "string" },
-          "InventoryID": { "type": "string" },
-          "LeadSource": { "type": "string" },
-          "InterestLevel": { "type": "integer" },
-          "PreviousVisits": { "type": "boolean" }
-        }
       }
     }
   },
