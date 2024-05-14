@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 
 import auth from "./auth";
+import openApiSpec from "./api/openApiSpec"; // Import the new route
 
 export async function loadRoutes() {
   const routes = [auth];
@@ -31,6 +32,11 @@ export async function loadRoutes() {
         `Module ${file} does not have a default export or is not a function.`
       );
     }
+  }
+
+  // Ensure openApiSpec route is only added once
+  if (!routes.includes(openApiSpec)) {
+    routes.push(openApiSpec);
   }
 
   return routes;

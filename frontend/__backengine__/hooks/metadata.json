@@ -116,6 +116,16 @@
     "import": "import useHealthcheckQuery from \"@/backengine/hooks/useHealthcheckQuery\";"
   },
   {
+    "hookName": "useApiOpenapiJsonQuery",
+    "definition": "const { data, isError, isLoading } = useApiOpenapiJsonQuery();",
+    "definitionReturnValues": {
+      "data": "data - contains the response data, possible undefined if loading or error occurred",
+      "isError": "boolean - to check if an error occurred",
+      "isLoading": "boolean - to check if the request is in progress"
+    },
+    "import": "import useApiOpenapiJsonQuery from \"@/backengine/hooks/useApiOpenapiJsonQuery\";"
+  },
+  {
     "hookName": "useApiResetPasswordPostMutation",
     "definition": "const { execute, isError, isLoading } = useApiResetPasswordPostMutation();",
     "definitionReturnValues": {
