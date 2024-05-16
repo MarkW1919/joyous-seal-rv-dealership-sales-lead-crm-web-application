@@ -7,12 +7,12 @@
 import axios, { RawAxiosRequestHeaders } from "axios";
 import { useCallback, useEffect, useState } from "react";
 
-export type ApiHealthcheckResponse = void;
+export type ApiApiHealthcheckResponse = void;
 
-function useHealthcheckQuery() {
+function useApiHealthcheckQuery() {
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [data, setData] = useState<ApiHealthcheckResponse>();
+  const [data, setData] = useState<ApiApiHealthcheckResponse>();
 
   const headers = (): RawAxiosRequestHeaders => {
     const token = localStorage.getItem("engine-token");
@@ -20,7 +20,7 @@ function useHealthcheckQuery() {
   };
 
   const fetchData = useCallback(async () => {
-    const url = new URL(`https://backengine-d4x1.fly.dev/api/healthcheck`);
+    const url = new URL(`https://backengine-d4x1.fly.dev/api/api/healthcheck`);
 
     const response = await axios.get(url.toString(), {
       headers: headers(),
@@ -46,4 +46,4 @@ function useHealthcheckQuery() {
   };
 }
 
-export default useHealthcheckQuery;
+export default useApiHealthcheckQuery;

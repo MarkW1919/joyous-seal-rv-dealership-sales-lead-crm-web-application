@@ -58,16 +58,6 @@
     "import": "import useApiIntegrationsQuery from \"@/backengine/hooks/useApiIntegrationsQuery\";"
   },
   {
-    "hookName": "useDashboardDataQuery",
-    "definition": "const { data, isError, isLoading } = useDashboardDataQuery();",
-    "definitionReturnValues": {
-      "data": "data - contains the response data, possible undefined if loading or error occurred",
-      "isError": "boolean - to check if an error occurred",
-      "isLoading": "boolean - to check if the request is in progress"
-    },
-    "import": "import useDashboardDataQuery from \"@/backengine/hooks/useDashboardDataQuery\";"
-  },
-  {
     "hookName": "useReportsExportCsvQuery",
     "definition": "const { data, isError, isLoading } = useReportsExportCsvQuery(\"startDate\", \"endDate\");",
     "definitionReturnValues": {
@@ -92,6 +82,26 @@
     ]
   },
   {
+    "hookName": "useApiHealthcheckQuery",
+    "definition": "const { data, isError, isLoading } = useApiHealthcheckQuery();",
+    "definitionReturnValues": {
+      "data": "data - contains the response data, possible undefined if loading or error occurred",
+      "isError": "boolean - to check if an error occurred",
+      "isLoading": "boolean - to check if the request is in progress"
+    },
+    "import": "import useApiHealthcheckQuery from \"@/backengine/hooks/useApiHealthcheckQuery\";"
+  },
+  {
+    "hookName": "useDashboardDataQuery",
+    "definition": "const { data, isError, isLoading } = useDashboardDataQuery();",
+    "definitionReturnValues": {
+      "data": "data - contains the response data, possible undefined if loading or error occurred",
+      "isError": "boolean - to check if an error occurred",
+      "isLoading": "boolean - to check if the request is in progress"
+    },
+    "import": "import useDashboardDataQuery from \"@/backengine/hooks/useDashboardDataQuery\";"
+  },
+  {
     "hookName": "useReportsExportPdfQuery",
     "definition": "const { data, isError, isLoading } = useReportsExportPdfQuery(\"startDate\", \"endDate\");",
     "definitionReturnValues": {
@@ -114,16 +124,6 @@
         "required": true
       }
     ]
-  },
-  {
-    "hookName": "useHealthcheckQuery",
-    "definition": "const { data, isError, isLoading } = useHealthcheckQuery();",
-    "definitionReturnValues": {
-      "data": "data - contains the response data, possible undefined if loading or error occurred",
-      "isError": "boolean - to check if an error occurred",
-      "isLoading": "boolean - to check if the request is in progress"
-    },
-    "import": "import useHealthcheckQuery from \"@/backengine/hooks/useHealthcheckQuery\";"
   },
   {
     "hookName": "useApiOpenapiJsonQuery",

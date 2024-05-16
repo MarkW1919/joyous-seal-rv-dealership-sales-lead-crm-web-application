@@ -1,10 +1,7 @@
-import type { FastifyInstance } from "fastify";
+import { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify';
 
 export default async function healthcheck(server: FastifyInstance) {
-  server.get("/healthcheck", async (request, reply) => {
-    reply.code(200).send({
-      status: "ok",
-      uptime: process.uptime(),
-    });
+  server.get('/api/healthcheck', async (_request: FastifyRequest, reply: FastifyReply) => {
+    return reply.status(200).send({ status: 'ok' });
   });
 }
