@@ -1,0 +1,2 @@
+DROP TABLE IF EXISTS users;
+CREATE TABLE users AS SELECT * FROM users_backup;
