@@ -1,73 +1,70 @@
-import FusionAuthClient, {
-  RegistrationRequest,
-} from "@fusionauth/typescript-client";
-import { Static, Type } from "@sinclair/typebox";
-import type { FastifyInstance } from "fastify";
-import { v4 as uuidv4 } from "uuid";
+import type { FastifyInstance, FastifyRequest, FastifyReply } from 'fastify';
+import { getDbClient } from '../db';
+// Dummy hashPassword Implementation
+async function hashPassword(password: string): Promise<string> {
+  // Dummy implementation (replace with actual hashing logic)
+  return password + "_hashed"; 
+}
 
-const SignupBody = Type.Object({
-  email: Type.String(),
-  password: Type.String(),
-});
-
-type SignupBody = Static<typeof SignupBody>;
-
-const SignupResponse = {
-  204: Type.Object({}),
-  "4xx": Type.Object({
-    error: Type.String(),
-  }),
-};
-
-const SignupResponseObject = Type.Object(SignupResponse);
-type SignupResponse = Static<typeof SignupResponseObject>;
+interface SignUpBody {
+  email: string;
+  password: string;
+}
 
 export default async function signup(server: FastifyInstance) {
-  server.post<{
-    Body: SignupBody;
-    Reply: SignupResponse;
-  }>(
-    "/signup",
+  server.post<{ Body: SignUpBody }>(
+    '/signup',
     {
       schema: {
-        body: SignupBody,
-        response: SignupResponse,
-      },
+        body: {
+          type: 'object',
+          properties: {
+            email: { type: 'string' },
+            password: { type: 'string' }
+          },
+          required: ['email', 'password']
+        },
+        response: {
+          201: {
+            type: 'object',
+            properties: {
+              message: { type: 'string' }
+            }
+          },
+          400: {
+            type: 'object',
+            properties: {
+              error: { type: 'string' }
+            }
+          },
+          500: {
+            type: 'object',
+            properties: {
+              error: { type: 'string' }
+            }
+          }
+        }
+      }
     },
     async (request, reply) => {
-      try {
-        if (
-          !process.env.FUSION_AUTH_URL ||
-          !process.env.FUSION_AUTH_TENANT_API_KEY ||
-          !process.env.FUSION_AUTH_APPLICATION_ID
-        ) {
-          throw new Error("Missing authentication configuration.");
-        }
+      const { email, password } = request.body;
+      const db = await getDbClient();
 
-        const client = new FusionAuthClient(
-          process.env.FUSION_AUTH_TENANT_API_KEY,
-          process.env.FUSION_AUTH_URL
+      try {
+        const hashedPassword = await hashPassword(password);
+
+        await db.execute(
+          'INSERT INTO users (email, password, sub) VALUES (?, ?, ?)',
+          [email, hashedPassword, email]
         );
 
-        const uuid = uuidv4();
-        const registrationRequest: RegistrationRequest = {
-          registration: {
-            applicationId: process.env.FUSION_AUTH_APPLICATION_ID,
-          },
-          user: {
-            email: request.body.email,
-            password: request.body.password,
-          },
-        };
-
-        await client.register(uuid, registrationRequest);
-
-        return reply.code(204).send({});
-      } catch (e) {
-        console.error(e);
-        return reply.code(400).send({
-          error: "Unable to initiate signup process. Please try again later.",
-        });
+        return reply.status(201).send({ message: 'User created successfully' });
+      } catch (err) {
+        request.log.error(err);
+        if (err.code === 'SQLITE_CONSTRAINT') {
+          return reply.status(400).send({ message: 'User already exists' });
+        }
+        return reply.status(500).send({ error: err.message });
       }
     }
   );
