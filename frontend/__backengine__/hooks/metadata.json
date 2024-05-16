@@ -48,6 +48,16 @@
     "import": "import useSignOutMutation from \"@/backengine/hooks/useSignOutMutation\";"
   },
   {
+    "hookName": "useApiIntegrationsQuery",
+    "definition": "const { data, isError, isLoading } = useApiIntegrationsQuery();",
+    "definitionReturnValues": {
+      "data": "data - contains the response data, possible undefined if loading or error occurred",
+      "isError": "boolean - to check if an error occurred",
+      "isLoading": "boolean - to check if the request is in progress"
+    },
+    "import": "import useApiIntegrationsQuery from \"@/backengine/hooks/useApiIntegrationsQuery\";"
+  },
+  {
     "hookName": "useDashboardDataQuery",
     "definition": "const { data, isError, isLoading } = useDashboardDataQuery();",
     "definitionReturnValues": {
@@ -124,6 +134,24 @@
       "isLoading": "boolean - to check if the request is in progress"
     },
     "import": "import useApiOpenapiJsonQuery from \"@/backengine/hooks/useApiOpenapiJsonQuery\";"
+  },
+  {
+    "hookName": "useApiIntegrationsIdDeleteMutation",
+    "definition": "const { execute, isError, isLoading } = useApiIntegrationsIdDeleteMutation(\"id\");",
+    "definitionReturnValues": {
+      "execute": "execute - async function to execute the DELETE request",
+      "isError": "boolean - to check if an error occurred",
+      "isLoading": "boolean - to check if the request is in progress"
+    },
+    "import": "import useApiIntegrationsIdDeleteMutation from \"@/backengine/hooks/useApiIntegrationsIdDeleteMutation\";",
+    "parameters": [
+      {
+        "schema": { "type": "number" },
+        "in": "path",
+        "name": "id",
+        "required": true
+      }
+    ]
   },
   {
     "hookName": "useApiResetPasswordPostMutation",
@@ -220,6 +248,26 @@
           "LeadSource",
           "InterestLevel"
         ]
+      }
+    }
+  },
+  {
+    "hookName": "useApiIntegrationsPostMutation",
+    "definition": "const { execute, isError, isLoading } = useApiIntegrationsPostMutation();",
+    "definitionReturnValues": {
+      "execute": "execute - async function to execute the POST request",
+      "isError": "boolean - to check if an error occurred",
+      "isLoading": "boolean - to check if the request is in progress"
+    },
+    "import": "import useApiIntegrationsPostMutation from \"@/backengine/hooks/useApiIntegrationsPostMutation\";",
+    "request": {
+      "schema": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "openapi_url": { "type": "string", "format": "uri" }
+        },
+        "required": ["name", "openapi_url"]
       }
     }
   },
